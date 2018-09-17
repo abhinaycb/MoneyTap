@@ -32,14 +32,17 @@ class WikiCell: UITableViewCell {
         cellImageView.layer.borderWidth=1.0
         cellImageView.layer.borderColor = UIColor.black.cgColor
         cellImageView.layer.masksToBounds = false
-        cellImageView.layer.cornerRadius = 30.0
+        cellImageView.clipsToBounds=true
+        cellImageView.layer.cornerRadius = 35.0
         return cellImageView
     }()
     
     func configure(title: String, description: String, language: String, imageObject: ImageObject?) {
         titleLabel.text = title
         descriptionLabel.text = description
-        
+        cellImageView.sd_setImage(with: URL(string: imageObject?.source ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+        cellImageView.sd_setShowActivityIndicatorView(true)
+        cellImageView.sd_setIndicatorStyle(.gray)
         self.addSubview(titleLabel)
         self.addSubview(descriptionLabel)
         self.addSubview(cellImageView)
@@ -49,7 +52,6 @@ class WikiCell: UITableViewCell {
         cellImageView.translatesAutoresizingMaskIntoConstraints = false
     
         setupConstraints()
-        cellImageView.sd_setImage(with: URL(string: imageObject?.source ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
     }
     
     func setupConstraints() {
@@ -59,7 +61,7 @@ class WikiCell: UITableViewCell {
                                           "cellImage": cellImageView]
         
         let titleLabelConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-[titleLabel]-(20)-[cellImage]-(20)-|",
+            withVisualFormat: "H:|-[titleLabel]-(>=10)-[cellImage]-|",
             options: [],
             metrics: nil,
             views: views)
@@ -67,7 +69,7 @@ class WikiCell: UITableViewCell {
         allConstraints += titleLabelConstraints
         
         let descriptionLabelConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-[descriptionLabel]-[cellImage(70.0)]-(20)-|",
+            withVisualFormat: "H:|-[descriptionLabel]-(>=10)-[cellImage(70)]-|",
             options: [],
             metrics: nil,
             views: views)
@@ -75,21 +77,14 @@ class WikiCell: UITableViewCell {
         allConstraints += descriptionLabelConstraints
         
         let verticalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-[titleLabel]-[descriptionLabel]-|",
+            withVisualFormat: "V:|-(>=20)-[titleLabel]-(10)-[descriptionLabel]-(>=20)-|",
             options: [],
             metrics: nil,
             views: views)
         
         allConstraints += verticalConstraints
         
-        let starsLabelverticalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-(20)-[cellImage(70.0)]-(20)-|",
-            options: [],
-            metrics: nil,
-            views: views)
-        
-        allConstraints += starsLabelverticalConstraints
-        allConstraints += [NSLayoutConstraint(item: cellImageView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0)]
+        allConstraints += [NSLayoutConstraint(item: cellImageView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0),NSLayoutConstraint(item: cellImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 70.0)]
         NSLayoutConstraint.activate(allConstraints)
     }
 }

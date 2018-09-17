@@ -18,7 +18,7 @@ class DetailViewModel {
     var searchResultHtmlString = BehaviorRelay<String>(value: "")
     
     init(pageId:Int,coordinator:SceneCoordinatorType) {
-        apiUrlString="https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&pageids=\(pageId)"
+        apiUrlString="https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=&exintro=&pageids=\(pageId)"
         self.coordinator=coordinator
         loadApiDataForClickedFeed()
     }
@@ -33,7 +33,7 @@ class DetailViewModel {
                 let json = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                 var htmlToAttributedString: NSAttributedString? {
                     do {
-                        return try NSAttributedString(data: data!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                        return try NSAttributedString(data: data!, options: [.documentType: NSAttributedString.DocumentType.html,.characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
                     } catch {
                         return NSAttributedString()
                     }

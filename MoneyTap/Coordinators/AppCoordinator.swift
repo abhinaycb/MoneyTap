@@ -18,7 +18,7 @@ final class AppCoordinator: SceneCoordinatorType, HasDisposeBag {
     init(window: UIWindow) {
         self.window = window
     }
-    //topmost controller
+    
     static func actualViewController(for viewController: UIViewController) -> UIViewController {
         if let navigationController = viewController as? UINavigationController {
             return navigationController.viewControllers.first!

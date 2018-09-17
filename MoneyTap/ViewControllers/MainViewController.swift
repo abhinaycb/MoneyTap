@@ -49,25 +49,28 @@ class MainViewController: UIViewController,UITableViewDelegate,Navigationable {
     //MARK:TableView Implementation
     func configureTableView() {
         self.title = "Search"
-        
-        self.tableView = UITableView(frame: UIScreen.main.bounds)
-        self.tableView.rx.setDelegate(self)
+        self.tableView = configureTableAndSearchController()
+        definesPresentationContext = true
+    }
+    
+    func configureTableAndSearchController()->UITableView {
+        let tableView=UITableView(frame: UIScreen.main.bounds)
+        tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        self.view = self.tableView
-        self.tableView.estimatedRowHeight = ROW_HEIGHT;
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.view = tableView
+        tableView.estimatedRowHeight = ROW_HEIGHT;
+        tableView.rowHeight = UITableViewAutomaticDimension;
         
         // Do any additional setup after loading the view.
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.sizeToFit()
         
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        
-        definesPresentationContext = true
+        tableView.tableHeaderView = self.searchController.searchBar
+        return tableView
     }
+    
     //MARK:Binding ViewMOdel
     func bindUIComponents() {
         _=searchController.searchBar.rx.text.orEmpty.bind(to: (viewModelObject?.searchKeyword)!)
@@ -87,10 +90,13 @@ class MainViewController: UIViewController,UITableViewDelegate,Navigationable {
             if(flagValue){
                 self.view.addSubview(self.viewModelObject?.firstTimeScreenView ?? UIView())
                 self.viewModelObject?.loadFirstTimeScreen()
-                self.tableView.isHidden=true
+                self.tableView.backgroundView?.isHidden=true
+                self.tableView.separatorStyle = .none
             }else{
                 self.viewModelObject?.popFirstTimeScreen()
                 self.viewModelObject?.firstTimeScreenView.removeFromSuperview()
+                self.tableView.backgroundView?.isHidden=false
+                self.tableView.separatorStyle = .singleLine
             }
         })
         

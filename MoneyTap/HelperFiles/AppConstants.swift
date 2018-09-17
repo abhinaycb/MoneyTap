@@ -18,7 +18,7 @@ struct API_KEYS {
     static let FACEBOOK_APP_ID: String = "460257644150836"
 }
 
-let ROW_HEIGHT:CGFloat = 150.0
+let ROW_HEIGHT:CGFloat = 140.0
 let DEVICE_TYPE = "IOS"
 let Button_Height: CGFloat = 60.0
 
@@ -66,4 +66,16 @@ struct EmptyViewText {
     static let imageNameText = "noDataImage"
 }
 
+enum SceneTransitionType {
+    enum PopType {
+        case root
+        case parent
+        case vc(viewController: UIViewController)
+    }
+    
+    case root
+    case push(animated: Bool)
+    case modal(animated: Bool)
+    case pop(animated: Bool, level: PopType)
+}
 

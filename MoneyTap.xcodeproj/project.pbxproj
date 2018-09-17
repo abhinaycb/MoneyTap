@@ -21,7 +21,6 @@
 		94B05385214D2A0300D69218 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B05384214D2A0300D69218 /* AppCoordinator.swift */; };
 		94B05387214D2B3400D69218 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B05386214D2B3400D69218 /* SceneCoordinatorType.swift */; };
 		94B05389214D2B6900D69218 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B05388214D2B6900D69218 /* Scene.swift */; };
-		94B0538B214D2BAE00D69218 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B0538A214D2BAE00D69218 /* SceneTransitionType.swift */; };
 		94B0538F214D2CD000D69218 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B0538E214D2CD000D69218 /* AppConstants.swift */; };
 		94B05391214D3AA200D69218 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B05390214D3AA200D69218 /* ActivityIndicator.swift */; };
 		94B05395214D40F500D69218 /* WikiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B05394214D40F500D69218 /* WikiCell.swift */; };
@@ -73,7 +72,6 @@
 		94B05384214D2A0300D69218 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		94B05386214D2B3400D69218 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		94B05388214D2B6900D69218 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		94B0538A214D2BAE00D69218 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		94B0538E214D2CD000D69218 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		94B05390214D3AA200D69218 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		94B05394214D40F500D69218 /* WikiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiCell.swift; sourceTree = "<group>"; };
@@ -138,8 +136,8 @@
 		94B05344214CFE7500D69218 /* MoneyTap */ = {
 			isa = PBXGroup;
 			children = (
+				94B05345214CFE7500D69218 /* AppDelegate.swift */,
 				94B05393214D40E200D69218 /* Views */,
-				94B0537E214D278D00D69218 /* MainFiles */,
 				94B0537D214D278600D69218 /* ViewModels */,
 				94B0537C214D254600D69218 /* ViewControllers */,
 				94B05381214D27CF00D69218 /* NetworkingAndModels */,
@@ -186,19 +184,10 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		94B0537E214D278D00D69218 /* MainFiles */ = {
-			isa = PBXGroup;
-			children = (
-				94B05345214CFE7500D69218 /* AppDelegate.swift */,
-			);
-			path = MainFiles;
-			sourceTree = "<group>";
-		};
 		94B0537F214D279600D69218 /* HelperFiles */ = {
 			isa = PBXGroup;
 			children = (
 				94B0538E214D2CD000D69218 /* AppConstants.swift */,
-				94B05390214D3AA200D69218 /* ActivityIndicator.swift */,
 			);
 			path = HelperFiles;
 			sourceTree = "<group>";
@@ -229,7 +218,6 @@
 				94B05384214D2A0300D69218 /* AppCoordinator.swift */,
 				94B05386214D2B3400D69218 /* SceneCoordinatorType.swift */,
 				94B05388214D2B6900D69218 /* Scene.swift */,
-				94B0538A214D2BAE00D69218 /* SceneTransitionType.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -245,6 +233,7 @@
 		94B05393214D40E200D69218 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94B05390214D3AA200D69218 /* ActivityIndicator.swift */,
 				94B05394214D40F500D69218 /* WikiCell.swift */,
 			);
 			path = Views;
@@ -506,7 +495,6 @@
 				94B0538F214D2CD000D69218 /* AppConstants.swift in Sources */,
 				94B05391214D3AA200D69218 /* ActivityIndicator.swift in Sources */,
 				94B053AB214E2A9100D69218 /* MainViewModel.swift in Sources */,
-				94B0538B214D2BAE00D69218 /* SceneTransitionType.swift in Sources */,
 				94B05348214CFE7500D69218 /* MainViewController.swift in Sources */,
 				94B0534E214CFE7500D69218 /* MoneyTap.xcdatamodeld in Sources */,
 				94B05395214D40F500D69218 /* WikiCell.swift in Sources */,

@@ -8,7 +8,6 @@
 
 import UIKit
 import RxCocoa
-import RxDataSources
 import RxSwift
 
 class DetailViewController: UIViewController,Navigationable {
