@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 import RxSwift
-import NSObject_Rx
 import RxCocoa
 
-final class AppCoordinator: SceneCoordinatorType, HasDisposeBag {
+final class AppCoordinator: SceneCoordinatorType {
     fileprivate var window: UIWindow
     var currentViewController: UIViewController?
     private var navigationController: UINavigationController?
+    let disposeBag=DisposeBag()
     init(window: UIWindow) {
         self.window = window
     }
